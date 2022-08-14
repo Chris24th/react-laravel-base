@@ -1,9 +1,13 @@
-### This is a personal template.
+# This is a personal template.
 
 ## Frontend
 
-- React, React Bootstrap, Routers
+- React
+- React Bootstrap
+- Routers
+- Axios
 
 ## Backend
 
 - Laravel: Models, Migrations, Controllers
+- MYSQL Database
