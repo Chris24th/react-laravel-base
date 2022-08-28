@@ -19,7 +19,9 @@ const Home = () => {
 
   return (
     <Container>
-      <Row>Logged In as: {user.email}</Row>
+      <Row>
+        <p>Logged In as: {user.email}</p>
+      </Row>
       <Row>
         Home
         <Col>
