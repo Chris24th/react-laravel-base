@@ -41,7 +41,7 @@ const SignIn = () => {
         <Card>
           <Card.Body>
             <Form onSubmit={onLogin}>
-              <h1 className="mb-3">Website Name</h1>
+              <h1 className="mb-6">Website Name</h1>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label className="text-danger">
                   {error && error}

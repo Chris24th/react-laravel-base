@@ -1,9 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import routes from "./routes";
+import Navbar from "react-bootstrap/Navbar";
 
 const App = () => {
   return (
     <div>
+      <Navbar bg="dark"></Navbar>
       <Router>
         <Routes>
           {routes &&
