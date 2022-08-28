@@ -29,8 +29,8 @@ const SignUp = () => {
   }, []);
 
   return (
-    <div>
-      <Container style={{}}>
+    <Container className=" d-flex align-items-center justify-content-center">
+      <div className="container-auth">
         <Card>
           <Card.Body>
             <Form onSubmit={onRegister}>
@@ -64,19 +64,17 @@ const SignUp = () => {
                   required
                 />
               </Form.Group>
-              <Form.Text>
-                Already Have Account? <Link to="/signin">Log In here.</Link>
-              </Form.Text>
-              <br />
               <Button className="mt-3" variant="primary" type="submit">
                 Register
               </Button>
             </Form>
           </Card.Body>
         </Card>
-      </Container>
-      ;
-    </div>
+        <Form.Text>
+          Already Have Account? <Link to="/signin">Log In here.</Link>
+        </Form.Text>
+      </div>
+    </Container>
   );
 };
 

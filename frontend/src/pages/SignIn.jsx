@@ -33,8 +33,8 @@ const SignIn = () => {
   }, []);
 
   return (
-    <div>
-      <Container>
+    <Container>
+      <div className="container-auth">
         <Card>
           <Card.Body>
             <Form onSubmit={onLogin}>
@@ -62,20 +62,17 @@ const SignIn = () => {
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
                 <Form.Check type="checkbox" label="Remember me" />
               </Form.Group>
-
-              <Form.Text>
-                Don't Have Account? <Link to="/signup">Register here.</Link>
-              </Form.Text>
-              <br />
               <Button className="mt-3" variant="primary" type="submit">
                 Login
               </Button>
             </Form>
           </Card.Body>
         </Card>
-      </Container>
-      ;
-    </div>
+        <Form.Text className="text-center">
+          Don't Have Account? <Link to="/signup">Register here.</Link>
+        </Form.Text>
+      </div>
+    </Container>
   );
 };
 
