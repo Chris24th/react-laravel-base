@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Button, Form, Row, Col, Container } from "react-bootstrap";
+import { useNavigate, Link } from "react-router-dom";
+import { Button, Form, Card, Container } from "react-bootstrap";
 import axios from "axios";
 
 const SignUp = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
   const navigate = useNavigate();
   const onRegister = async (e) => {
     e.preventDefault();
@@ -16,32 +17,33 @@ const SignUp = () => {
       })
       .then((res) => {
         console.log(res.data);
-        sessionStorage.setItem("verify-token", res.data);
+        localStorage.setItem("verify-token", res.data);
         navigate("/signin");
       });
   };
 
   useEffect(() => {
-    if (sessionStorage.getItem("user-data")) {
+    if (localStorage.getItem("user-data")) {
       navigate("/");
     }
   }, []);
 
   return (
     <div>
-      <Container>
-        <Row>
-          <Col>
+      <Container style={{}}>
+        <Card>
+          <Card.Body>
             <Form onSubmit={onRegister}>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Group className="mb-2" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
                   type="email"
                   placeholder="Enter email"
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
                 <Form.Text className="text-muted">
-                  We'll never share your email with anyone else.
+                  We'll never share your email with anyone.
                 </Form.Text>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -50,14 +52,28 @@ const SignUp = () => {
                   type="password"
                   placeholder="Password"
                   onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </Form.Group>
-              <Button variant="primary" type="submit">
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Confirm Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Confirm Password"
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                />
+              </Form.Group>
+              <Form.Text>
+                Already Have Account? <Link to="/signin">Log In here.</Link>
+              </Form.Text>
+              <br />
+              <Button className="mt-3" variant="primary" type="submit">
                 Register
               </Button>
             </Form>
-          </Col>
-        </Row>
+          </Card.Body>
+        </Card>
       </Container>
       ;
     </div>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Button, Form, Row, Col, Container } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Button, Form, Card, Container } from "react-bootstrap";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
 const SignIn = () => {
@@ -20,14 +20,14 @@ const SignIn = () => {
         if (res.data.error) {
           setError(res.data.error);
         } else {
-          sessionStorage.setItem("user-data", JSON.stringify(res.data));
+          localStorage.setItem("user-data", JSON.stringify(res.data));
           navigate("/");
         }
       });
   };
 
   useEffect(() => {
-    if (sessionStorage.getItem("user-data")) {
+    if (localStorage.getItem("user-data")) {
       navigate("/");
     }
   }, []);
@@ -35,8 +35,8 @@ const SignIn = () => {
   return (
     <div>
       <Container>
-        <Row>
-          <Col>
+        <Card>
+          <Card.Body>
             <Form onSubmit={onLogin}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label className="text-danger">
@@ -47,10 +47,8 @@ const SignIn = () => {
                   type="email"
                   placeholder="Enter email"
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
-                <Form.Text className="text-muted">
-                  We'll never share your email with anyone else.
-                </Form.Text>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
@@ -58,17 +56,23 @@ const SignIn = () => {
                   type="password"
                   placeholder="Password"
                   onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
                 <Form.Check type="checkbox" label="Remember me" />
               </Form.Group>
-              <Button variant="primary" type="submit">
+
+              <Form.Text>
+                Don't Have Account? <Link to="/signup">Register here.</Link>
+              </Form.Text>
+              <br />
+              <Button className="mt-3" variant="primary" type="submit">
                 Login
               </Button>
             </Form>
-          </Col>
-        </Row>
+          </Card.Body>
+        </Card>
       </Container>
       ;
     </div>

@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
-  const user = sessionStorage.getItem("user-data");
+  const user = localStorage.getItem("user-data");
   const onLogout = () => {
-    sessionStorage.clear();
+    localStorage.clear();
     navigate("/signin");
   };
 

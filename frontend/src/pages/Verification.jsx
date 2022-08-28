@@ -7,6 +7,7 @@ const Verification = () => {
   const [token, setToken] = useState();
   const navigate = useNavigate();
   const api = async () => {
+    console.log(token);
     token &&
       (await axios
         .post("http://127.0.0.1:8000/api/verification", {
@@ -14,15 +15,15 @@ const Verification = () => {
         })
         .then((res) => {
           console.log(res.data);
-          //   sessionStorage.clear();
+          localStorage.clear();
         }));
   };
   useEffect(() => {
-    if (sessionStorage.getItem("user-data")) {
+    if (localStorage.getItem("user-data")) {
       navigate("/");
     }
 
-    setToken(sessionStorage.getItem("verify-token"));
+    setToken(localStorage.getItem("verify-token"));
   }, [api()]);
   const onLogin = () => {
     navigate("/signin");
@@ -33,7 +34,7 @@ const Verification = () => {
         <Col>Your Email is verified!</Col>
       </Row>
       <Row>
-        <Button onClick={onLogin}>Login</Button>
+        <Button onClick={onLogin}>Log In</Button>
       </Row>
     </Container>
   );
