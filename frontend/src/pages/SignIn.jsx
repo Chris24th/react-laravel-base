@@ -33,11 +33,15 @@ const SignIn = () => {
   }, []);
 
   return (
-    <Container>
+    <Container
+      className=" d-flex align-items-center justify-content-center"
+      style={{ minHeight: "100vh" }}
+    >
       <div className="container-auth">
         <Card>
           <Card.Body>
             <Form onSubmit={onLogin}>
+              <h1 className="mb-3">Website Name</h1>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label className="text-danger">
                   {error && error}
@@ -63,12 +67,12 @@ const SignIn = () => {
                 <Form.Check type="checkbox" label="Remember me" />
               </Form.Group>
               <Button className="mt-3" variant="primary" type="submit">
-                Login
+                Log In
               </Button>
             </Form>
           </Card.Body>
         </Card>
-        <Form.Text className="text-center">
+        <Form.Text>
           Don't Have Account? <Link to="/signup">Register here.</Link>
         </Form.Text>
       </div>

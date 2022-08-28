@@ -29,11 +29,15 @@ const SignUp = () => {
   }, []);
 
   return (
-    <Container className=" d-flex align-items-center justify-content-center">
+    <Container
+      className="d-flex align-items-center justify-content-center"
+      style={{ minHeight: "100vh" }}
+    >
       <div className="container-auth">
         <Card>
           <Card.Body>
             <Form onSubmit={onRegister}>
+              <h1 className="mb-3">Create An Account</h1>
               <Form.Group className="mb-2" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
