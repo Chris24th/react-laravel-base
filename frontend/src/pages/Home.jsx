@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
-  const user = localStorage.getItem("user-data");
+  const user = JSON.parse(localStorage.getItem("user-data"));
   const onLogout = () => {
     localStorage.clear();
     navigate("/signin");
@@ -14,10 +14,12 @@ const Home = () => {
     if (!user) {
       navigate("/signin");
     }
+    console.log(user);
   }, []);
 
   return (
     <Container>
+      <Row>Logged In as: {user.email}</Row>
       <Row>
         Home
         <Col>

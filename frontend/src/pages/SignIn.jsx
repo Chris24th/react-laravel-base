@@ -46,6 +46,7 @@ const SignIn = () => {
                 <Form.Label className="text-danger">
                   {error && error}
                 </Form.Label>
+                <br />
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
                   type="email"
